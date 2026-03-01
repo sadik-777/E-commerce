@@ -3,21 +3,14 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import { IoIosSearch } from "react-icons/io";
 import { MdClose } from "react-icons/md";
-import React,{ useContext, useState } from "react";
+import React,{ useState } from "react";
 import Slide from '@mui/material/Slide';
-import { Mycontext } from "../../App";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 const CountryDropDown = () => {
-    const context = useContext(Mycontext)
     const [isopenModel, setIsopenModel] = useState(false)
-    const [selectedTab, setselectedTab] = useState(null)
-    const selectCountry = (index)=>{
-        setselectedTab(index)
-        setIsopenModel(false)
-    }
     return(
         <>
     <Button onClick={()=>setIsopenModel(true)}  sx={{border: "0.5px solid gray"}} variant="outlined" className="h-14">
@@ -55,14 +48,23 @@ const CountryDropDown = () => {
     </Button>
 </div>
             <ul className="mb-0 tk overflow-y-scroll overflow-x-hidden max-h-100">
-                {
-                    context?.countryList?.length !== 0 && context?.countryList?.map((item, i)=>(
-
-                        <li key={i}><Button onClick={()=>selectCountry(i)}
-                        className={`${selectedTab===i ? 'active': ''}`}
-                        >{item.country}</Button></li>
-                    ))
-                }
+                <li><Button onClick={()=>setIsopenModel(false)}>Laayoune</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>New York</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Florida</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Spain</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Laayoune</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>New York</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Florida</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Spain</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Laayoune</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>New York</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Florida</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Spain</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Spain</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Laayoune</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>New York</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Florida</Button></li>
+                <li><Button onClick={()=>setIsopenModel(false)}>Spain</Button></li>
                 
             </ul>
     </Dialog>

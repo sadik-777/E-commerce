@@ -3,14 +3,11 @@ import logo from '../../assets/images/logo.png'
 import Button from '@mui/material/Button';
 import CountryDropDown from '../countryDropDown';
 import { LuUser } from "react-icons/lu";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { HiOutlineShoppingBag } from "react-icons/hi2"; // Drna hi2 bach tji l-icon bhal tswira
 import SearchBox from './SearchBox';
 import Navigation from './Navigation';
-import Mycontext from '../../App';
-import { useContext } from 'react';
 
 const Header = () => {
-    const context = useContext(Mycontext)
     return (
         <>
             <header className="flex justify-center items-center">
@@ -36,9 +33,7 @@ const Header = () => {
 
                     {/* 2. Location & Search Section */}
                     <div className="flex items-center gap-4 flex-1 max-w-[60%] mx-10">
-                        {
-                            context?.countryList?.length !== 0 && <CountryDropDown />
-                        }
+                        <CountryDropDown />
                         <SearchBox/>
                     </div>
 
