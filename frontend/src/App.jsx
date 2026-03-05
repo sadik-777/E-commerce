@@ -7,6 +7,7 @@ import axios from "axios"
 const Mycontext = createContext()
 function App() {
   const [countryList, setCountryList] = useState([])
+  const [selectCountry, setSelectCountry] = useState('')
   useEffect(()=>{
     getCountry("https://countriesnow.space/api/v0.1/countries/")
   },[])
@@ -17,7 +18,9 @@ function App() {
     })
   }
   const values = {
-    countryList
+    countryList,
+    setSelectCountry,
+    selectCountry
   }
   return (
     <>
