@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import { IoIosSearch } from "react-icons/io";
 import { MdClose } from "react-icons/md";
-import React,{ useContext, useState } from "react";
+import React,{ useContext, useEffect, useState } from "react";
 import Slide from '@mui/material/Slide';
 import { Mycontext } from "../../App";
 
@@ -13,17 +13,33 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const CountryDropDown = () => {
     const context = useContext(Mycontext)
     const [isopenModel, setIsopenModel] = useState(false)
+    const [countryList, setcountryList] = useState([])
     const [selectedTab, setselectedTab] = useState(null)
-    const selectCountry = (index)=>{
+    const selectCountry = (index, country)=>{
         setselectedTab(index)
+        alert(selectedTab)
         setIsopenModel(false)
+        context.setSelectCountry(country)
+    }
+    useEffect(()=>{
+        setcountryList(context.countryList)
+    },[])
+    const filterList = (e) => {
+        const keyword = e.target.value.toLowerCase()
+        if(keyword !== ""){
+            const list = countryList?.filter(item=>item.country.toLowerCase().includes(keyword))
+            setcountryList(list)
+        }else{
+            setcountryList(context.countryList)
+        }
     }
     return(
         <>
     <Button onClick={()=>setIsopenModel(true)}  sx={{border: "0.5px solid gray"}} variant="outlined" className="h-14">
     <div className='flex flex-col'>
     <span className="text-xs capitalize text-black leading-[1.8] pr-2.5 pt-2.5 ">Your Location</span>
-    <span className="text-xs capitalize text-blue-600 font-bold leading-[1.8] pr-2.5">India</span>
+    <span className="text-xs capitalize text-blue-600 font-bold leading-[1.8] pr-2.5">{context.selectCountry !==''? 
+    context.selectCountry.length > 10 ? context.selectCountry?.substr(0,10)+'....': context.selectCountry : 'select Location'}</span>
     </div>
     <span className="ml-auto"><FaAngleDown/></span>
     </Button>
@@ -49,6 +65,7 @@ const CountryDropDown = () => {
     <input 
         type="text" 
         placeholder="Search your area..."
+        onChange={filterList}
         className="w-full bg-transparent outline-none text-[15px] text-[#2b2b2b] placeholder-[#838383]"
     />
     <Button className="min-w-fit! p-0!">
@@ -56,10 +73,10 @@ const CountryDropDown = () => {
 </div>
             <ul className="mb-0 tk overflow-y-scroll overflow-x-hidden max-h-100">
                 {
-                    context?.countryList?.length !== 0 && context?.countryList?.map((item, i)=>(
+                    countryList?.length !== 0 && countryList?.map((item, i)=>(
 
-                        <li key={i}><Button onClick={()=>selectCountry(i)}
-                        className={`${selectedTab===i ? 'active': ''}`}
+                        <li key={i}><Button onClick={()=>selectCountry(i,item.country)}
+                        className={` ${selectedTab===i ? 'active': ''}`}
                         >{item.country}</Button></li>
                     ))
                 }
