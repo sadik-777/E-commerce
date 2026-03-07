@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
 .tk li button{
     width: 100%;
     text-transform: capitalize !important;
@@ -8,4 +10,38 @@
 }
 .active{
     background-color: #ccc !important;
+}
+/* Bach dakhal l-arrows l-dakhil d l-banner */
+.homeBannerSection .slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.2); /* Lon khafif */
+    border-radius: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.homeBannerSection .slick-prev {
+    left: 25px; 
+}
+
+.homeBannerSection .slick-next {
+    right: 25px; 
+}
+
+.homeBannerSection .slick-arrow:hover {
+    background: #2bbef9 !important; 
+}
+
+.homeBannerSection .slick-prev:before, 
+.homeBannerSection .slick-next:before {
+    font-size: 20px;
+    opacity: 1;
+    color: white;
 }
