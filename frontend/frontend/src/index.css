@@ -1,8 +1,0 @@
-@import "tailwindcss";
-.tk li button{
-    width: 100%;
-    text-transform: capitalize !important;
-    color: #000 !important;
-    justify-content: flex-start;
-    padding: 15px 20px !important;
-}
