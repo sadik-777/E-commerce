@@ -22,7 +22,7 @@ const Navigation = () => {
         <nav className="py-2">
             <div className="justify-between! container mx-auto w-[90%] max-w-[90%] flex items-center gap-8 mt-4">
 <div className="shrink-0 group relative"> {/* Zdna group w relative hna */}
-    <Button className='bg-[#2bbef9]! rounded-full! py-2.5! px-6! flex! flex-col! items-center! justify-center! min-w-60! hover:bg-[#23a5d9]! transition-all relative overflow-visible!'>
+    <Button className='bg-[#2bbef9]! rounded-full! py-2.5! px-6! flex! flex-col! items-center! justify-center! min-w-60! focus:bg-[#23a5d9]! transition-all relative overflow-visible!'>
         <div className="flex items-center justify-between w-full">
             <span className='mr-3 text-white text-lg!'><CiMenuBurger/></span>
             <span className='text-white font-bold text-[13px]'>ALL CATEGORIES</span>

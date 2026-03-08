@@ -1,17 +1,21 @@
 @import "tailwindcss";
 @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
-.tk li button{
+
+/* --- 1. GENERAL & SIDEBAR --- */
+.tk li button {
     width: 100%;
     text-transform: capitalize !important;
     color: #000 !important;
     justify-content: flex-start;
     padding: 15px 20px !important;
 }
-.active{
+
+.active {
     background-color: #ccc !important;
 }
-/* Bach dakhal l-arrows l-dakhil d l-banner */
+
+/* --- 2. HOME BANNER (SLICK CAROUSEL) --- */
 .homeBannerSection .slick-arrow {
     position: absolute;
     top: 50%;
@@ -19,7 +23,7 @@
     z-index: 10;
     width: 45px;
     height: 45px;
-    background: rgba(255, 255, 255, 0.2); /* Lon khafif */
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 100%;
     display: flex !important;
     align-items: center;
@@ -27,21 +31,52 @@
     transition: all 0.3s ease;
 }
 
-.homeBannerSection .slick-prev {
-    left: 25px; 
-}
-
-.homeBannerSection .slick-next {
-    right: 25px; 
-}
-
-.homeBannerSection .slick-arrow:hover {
-    background: #2bbef9 !important; 
-}
-
+.homeBannerSection .slick-prev { left: 25px; }
+.homeBannerSection .slick-next { right: 25px; }
+.homeBannerSection .slick-arrow:hover { background: #2bbef9 !important; }
 .homeBannerSection .slick-prev:before, 
-.homeBannerSection .slick-next:before {
-    font-size: 20px;
-    opacity: 1;
-    color: white;
+.homeBannerSection .slick-next:before { font-size: 20px; opacity: 1; color: white; }
+
+/* --- 3. CATEGORY CARDS (HOME CAT) --- */
+.homecat .item {
+    text-align: center;
+    padding: 20px 10px;
+    border: 1px solid #edeef5;
+    border-radius: 10px;
+    background: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 180px;
+}
+
+.homecat .item:hover {
+    border-color: #2bbef9;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* --- 4. PRODUCT SLIDER (CUSTOM BUTTONS & SWIPER FIX) --- */
+.product-slider-container {
+    position: relative;
+}
+
+/* Swiper container: hide overflowing slides but keep room for shadows */
+.product-slider-container .swiper {
+    overflow: hidden !important;
+    padding: 20px 25px !important;   /* space for card shadows */
+    margin: -20px -25px !important;  /* pulls container back to original position */
+}
+
+/* Custom navigation buttons are styled via Tailwind, only extra positioning if needed */
+.product-slider-container .custom-prev,
+.product-slider-container .custom-next {
+    transform: translateY(-50%);
+    z-index: 50;
+}
+
+/* Hide custom buttons on mobile */
+@media (max-width: 1024px) {
+    .product-slider-container .custom-prev,
+    .product-slider-container .custom-next {
+        display: none !important;
+    }
 }

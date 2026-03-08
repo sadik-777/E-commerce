@@ -13,7 +13,7 @@ const Homebanner = () => {
         autoplay:true
       };
 return(
-    <div className="homeBannerSection">
+    <div className="relative homeBannerSection w-5xl -right-96 mt-9">
     <Slider {...settings}>
         <div className="item">
             <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/05/slider-image-3.jpg" alt="" className="w-full"/>
