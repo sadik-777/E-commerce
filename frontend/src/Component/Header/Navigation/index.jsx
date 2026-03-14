@@ -11,7 +11,7 @@ import { LuEgg } from "react-icons/lu";
 import { IoSnowOutline } from "react-icons/io5";
 import { PiCookieLight, PiLeafLight } from "react-icons/pi";
 const CategoryItem = ({ icon, title, hasSub = false }) => (
-    <li className="flex items-center gap-4 px-5 py-3 hover:bg-[#f1f1f1] cursor-pointer group/item transition-all list-none">
+    <li className="flex items-center gap-4 px-5 py-3 focus:bg-[#f1f1f1] cursor-pointer group/item transition-all list-none">
         <span className="text-[22px] text-gray-400 group-hover/item:text-[#2bbef9]">{icon}</span>
         <span className="text-[14px] font-medium text-[#4d4d4d] group-hover/item:text-[#2bbef9]">{title}</span>
         {hasSub && <span className="ml-auto text-gray-400 text-xs"><IoIosArrowForward /></span>}
@@ -35,7 +35,7 @@ const Navigation = () => {
         </span>
     </Button>
 
-    <div className="absolute top-[110%] left-0 w-full min-w-60 bg-white shadow-xl border border-gray-100 rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+    <div className="absolute top-[110%] left-0 w-full min-w-60 bg-white shadow-xl border border-gray-100 rounded-lg py-2 opacity-0 invisible group-focus:opacity-100 group-focus:visible transition-all duration-300 z-50">
         <ul className="flex flex-col">
             <CategoryItem icon={<CiApple />} title="Fruits & Vegetables" hasSub={true} />
             <CategoryItem icon={<GiSteak />} title="Meats & Seafood" />
@@ -48,9 +48,9 @@ const Navigation = () => {
             
             <hr className="my-2 border-gray-100" />
             
-            <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] hover:bg-[#f1f1f1] cursor-pointer transition-colors">Value of the Day</li>
-            <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] hover:bg-[#f1f1f1] cursor-pointer transition-colors">Top 100 Offers</li>
-            <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] hover:bg-[#f1f1f1] cursor-pointer transition-colors">New Arrivals</li>
+            <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] focus:bg-[#f1f1f1] cursor-pointer transition-colors">Value of the Day</li>
+            <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] focus:bg-[#f1f1f1] cursor-pointer transition-colors">Top 100 Offers</li>
+            <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] focus:bg-[#f1f1f1] cursor-pointer transition-colors">New Arrivals</li>
         </ul>
     </div>
 </div>
