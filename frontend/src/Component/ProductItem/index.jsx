@@ -1,9 +1,16 @@
 import React from 'react';
 import { TfiFullscreen } from "react-icons/tfi";
 import { IoMdHeartEmpty } from "react-icons/io";
-
+import { useState,useContext } from "react";
+import ProductModal from '../../Component/ProductModal/index'
+import {Mycontext} from '../../App'
 const ProductItem = () => {
+  const context = useContext(Mycontext)
+  const viewProductDetails = (id)=>{
+    context.setIsopenProductModel(true)
+  }
   return (
+    <>
 <div className="productItem group relative p-5 bg-white border-r border-b border-gray-100 flex flex-col h-full hover:shadow-2xl hover:z-20 transition-all duration-300">
       
       {/* Badges: Discount and Category */}
@@ -14,7 +21,7 @@ const ProductItem = () => {
 
       {/* Hover Action Buttons (Right side) */}
       <div className="absolute top-4 right-[-50px] group-hover:right-4 flex flex-col gap-2 transition-all duration-300 z-10">
-        <button className="w-9 h-9 bg-white shadow-md border border-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-all">
+        <button onClick={()=>viewProductDetails()} className="w-9 h-9 bg-white shadow-md border border-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-all">
           <TfiFullscreen size={14} />
         </button>
         <button className="w-9 h-9 bg-white shadow-md border border-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-all">
@@ -59,6 +66,7 @@ const ProductItem = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

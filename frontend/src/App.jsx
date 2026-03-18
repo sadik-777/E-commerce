@@ -3,12 +3,14 @@ import Header from "./Component/Header"
 import Footer from "./Component/Footer"
 import { Routes, Route } from "react-router-dom";
 import './index.css'
+import ProductModal from './Component/ProductModal/index'
 import { createContext, useEffect, useState } from "react";
 import axios from "axios"
 const Mycontext = createContext()
 function App() {
   const [countryList, setCountryList] = useState([])
   const [selectCountry, setSelectCountry] = useState('')
+  const [isOpenProductModel, setIsopenProductModel] = useState(false)
   useEffect(()=>{
     getCountry("https://countriesnow.space/api/v0.1/countries/")
   },[])
@@ -21,7 +23,9 @@ function App() {
   const values = {
     countryList,
     setSelectCountry,
-    selectCountry
+    selectCountry,
+    isOpenProductModel,
+    setIsopenProductModel
   }
   return (
     <>
@@ -31,7 +35,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
         </Routes>
     <Footer/>
-
+    {isOpenProductModel === true && <ProductModal/>}
         </Mycontext.Provider>
         </>
   )
