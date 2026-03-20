@@ -10,6 +10,7 @@ import { CiApple } from "react-icons/ci";
 import { LuEgg } from "react-icons/lu";
 import { IoSnowOutline } from "react-icons/io5";
 import { PiCookieLight, PiLeafLight } from "react-icons/pi";
+import { useState } from 'react';
 const CategoryItem = ({ icon, title, hasSub = false }) => (
     <li className="flex items-center gap-4 px-5 py-3 focus:bg-[#f1f1f1] cursor-pointer group/item transition-all list-none">
         <span className="text-[22px] text-gray-400 group-hover/item:text-[#2bbef9]">{icon}</span>
@@ -18,41 +19,41 @@ const CategoryItem = ({ icon, title, hasSub = false }) => (
     </li>
 );
 const Navigation = () => {
+    const [openCategorie, setopenCategorie] = useState(false)
     return (
-        <nav className="py-2">
+        <nav className="shrink-0 relative">
             <div className="justify-between! container mx-auto w-[90%] max-w-[90%] flex items-center gap-8 mt-4">
 <div className="shrink-0 group relative"> {/* Zdna group w relative hna */}
-    <Button className='bg-[#2bbef9]! rounded-full! py-2.5! px-6! flex! flex-col! items-center! justify-center! min-w-60! focus:bg-[#23a5d9]! transition-all relative overflow-visible!'>
+            <Button 
+        onClick={() => setopenCategorie(!openCategorie)}
+        className='bg-[#2bbef9]! rounded-full! py-2.5! px-6! flex! flex-col! items-center! justify-center! min-w-60! transition-all relative overflow-visible!'>
         <div className="flex items-center justify-between w-full">
             <span className='mr-3 text-white text-lg!'><CiMenuBurger/></span>
             <span className='text-white font-bold text-[13px]'>ALL CATEGORIES</span>
             <span className='ml-auto text-white text-sm!'><FaAngleDown/></span>
         </div>
-        
-        {/* Badge dial Total Products */}
         <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#e8f3fe] text-[#71778e] text-[9px] font-bold px-3 py-0.5 rounded-full border border-white whitespace-nowrap">
             TOTAL 63 PRODUCTS
         </span>
     </Button>
-
-    <div className="absolute top-[110%] left-0 w-full min-w-60 bg-white shadow-xl border border-gray-100 rounded-lg py-2 opacity-0 invisible group-focus:opacity-100 group-focus:visible transition-all duration-300 z-50">
-        <ul className="flex flex-col">
-            <CategoryItem icon={<CiApple />} title="Fruits & Vegetables" hasSub={true} />
-            <CategoryItem icon={<GiSteak />} title="Meats & Seafood" />
-            <CategoryItem icon={<LuEgg />} title="Breakfast & Dairy" />
-            <CategoryItem icon={<PiCoffeeFill />} title="Beverages" hasSub={true} />
-            <CategoryItem icon={<LiaCookieSolid />} title="Breads & Bakery" />
-            <CategoryItem icon={<IoSnowOutline />} title="Frozen Foods" />
-            <CategoryItem icon={<PiCookieLight />} title="Biscuits & Snacks" />
-            <CategoryItem icon={<PiLeafLight />} title="Grocery & Staples" />
-            
-            <hr className="my-2 border-gray-100" />
-            
-            <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] focus:bg-[#f1f1f1] cursor-pointer transition-colors">Value of the Day</li>
-            <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] focus:bg-[#f1f1f1] cursor-pointer transition-colors">Top 100 Offers</li>
-            <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] focus:bg-[#f1f1f1] cursor-pointer transition-colors">New Arrivals</li>
-        </ul>
-    </div>
+    {openCategorie &&(
+        <div className="absolute top-[110%] left-0 w-full min-w-60 bg-white shadow-xl border border-gray-100 rounded-lg py-2 z-50">
+            <ul className="flex flex-col">
+                <CategoryItem icon={<CiApple />} title="Fruits & Vegetables" hasSub={true} />
+                <CategoryItem icon={<GiSteak />} title="Meats & Seafood" />
+                <CategoryItem icon={<LuEgg />} title="Breakfast & Dairy" />
+                <CategoryItem icon={<PiCoffeeFill />} title="Beverages" hasSub={true} />
+                <CategoryItem icon={<LiaCookieSolid />} title="Breads & Bakery" />
+                <CategoryItem icon={<IoSnowOutline />} title="Frozen Foods" />
+                <CategoryItem icon={<PiCookieLight />} title="Biscuits & Snacks" />
+                <CategoryItem icon={<PiLeafLight />} title="Grocery & Staples" />
+                <hr className="my-2 border-gray-100" />
+                <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] hover:bg-[#f1f1f1] cursor-pointer transition-colors">Value of the Day</li>
+                <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] hover:bg-[#f1f1f1] cursor-pointer transition-colors">Top 100 Offers</li>
+                <li className="px-5 py-2.5 text-[14px] font-semibold text-[#2b2b2b] hover:bg-[#f1f1f1] cursor-pointer transition-colors">New Arrivals</li>
+            </ul>
+        </div>
+    )}
 </div>
                 {/* 2. Navigation Links */}
                 <div className="">
