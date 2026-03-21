@@ -6,6 +6,7 @@ import './index.css'
 import ProductModal from './Component/ProductModal/index'
 import { createContext, useEffect, useState } from "react";
 import axios from "axios"
+import Listing from './pages/Listing/index'
 const Mycontext = createContext()
 function App() {
   const [countryList, setCountryList] = useState([])
@@ -33,6 +34,7 @@ function App() {
     <Header/>
         <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/categorie/:id" element={<Listing/>}/>
         </Routes>
     <Footer/>
     {isOpenProductModel === true && <ProductModal/>}

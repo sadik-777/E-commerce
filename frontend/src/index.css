@@ -80,3 +80,12 @@
         display: none !important;
     }
 }
+.range-slider .range-slider__thumb,
+.range-slider .range-slider__range {
+    background: #000000 !important;
+}
+
+.range-slider .range-slider__thumb {
+    width: 15px !important;
+    height: 15px !important;
+}
