@@ -2,55 +2,49 @@ import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
 import { MdClose } from "react-icons/md";
 import Rating from '@mui/material/Rating';
-import Slider from "react-slick";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/styles.min.css';
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaCheck } from "react-icons/fa";
 import { BsArrowDownUp } from "react-icons/bs";
-import { FaCheck } from "react-icons/fa";
-import { useRef, useState } from 'react';
-import QuantityBox from '../../Component/QuantityBox/index'
-import {Mycontext} from '../../App'
-import {useContext } from "react";
-const ProductModal = (props) => {
-    const context = useContext(Mycontext)
-    var settings2 = {
-        dots: false,
-        infinite: false,
-        speed: 700,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-    };
-    var settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        arrows: true,
-    };
+import { useRef, useState, useContext } from 'react';
+import QuantityBox from '../../Component/QuantityBox/index';
+import { Mycontext } from '../../App';
 
-    const [value, setValue] = useState(2.5);
-    const zoomSliderBig = useRef()
-    const zoomSlider = useRef()
+const images = [
+    'https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg',
+    'https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-47.jpg',
+    'https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-35.jpg',
+];
+
+const ProductModal = () => {
+    const [slideIndex, setSlideIndex] = useState(0);
+    const [value] = useState(2.5);
+    const context = useContext(Mycontext);
+
+    const zoomSliderBig = useRef();
+    const zoomSlider = useRef();
 
     const goto = (index) => {
-        zoomSlider.current.slickGoTo(index)
-        zoomSliderBig.current.slickGoTo(index)
-    }
+        setSlideIndex(index);
+        zoomSlider.current.swiper.slideTo(index);
+        zoomSliderBig.current.swiper.slideTo(index);
+    };
 
     return (
         <Dialog
             open={true}
-            onClose={()=>context.setIsopenProductModel(false)}
+            onClose={() => context.setIsopenProductModel(false)}
             PaperProps={{
                 sx: { width: '800px', maxWidth: '800px', borderRadius: '12px', padding: '10px' }
             }}
         >
             {/* Close Button */}
             <Button
-                onClick={()=>context.setIsopenProductModel(false)}
+                onClick={() => context.setIsopenProductModel(false)}
                 className="absolute! right-2! top-2! min-w-0! w-9! h-9! rounded-full! bg-gray-100! text-black! hover:bg-gray-200!"
             >
                 <MdClose size={18} />
@@ -78,44 +72,56 @@ const ProductModal = (props) => {
 
                 {/* Left - Images */}
                 <div className="w-full md:w-5/12 pr-4">
-                    <div className="productZoom">
-                        <div className="w-full md:w-5/12 pr-4">
-                            <div className="productZoom relative">
-                                {/* Badges */}
-                                <span className="absolute top-2 left-2 z-10 bg-blue-500 text-white text-[11px] font-bold px-2 py-1 rounded">
-                                    23%
-                                </span>
-                                <span className="absolute top-8 left-2 z-10 bg-gray-700 text-white text-[11px] font-bold px-2 py-1 rounded mt-1">
-                                    RECOMMENDED
-                                </span>
-                            </div>
-                        </div>
-                        <Slider {...settings2} className='zoomSliderBig' ref={zoomSliderBig}>
-                            <div className='item'>
-                                <InnerImageZoom zoomType="hover" zoomScale={1}
-                                    src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg`} />
-                            </div>
-                            <div className='item'>
-                                <InnerImageZoom zoomType="hover" zoomScale={1}
-                                    src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-47.jpg`} />
-                            </div>
-                            <div className='item'>
-                                <InnerImageZoom zoomType="hover" zoomScale={1}
-                                    src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-35.jpg`} />
-                            </div>
-                        </Slider>
+
+                    {/* Big Zoom Slider */}
+                    <div className="relative">
+                        {/* Badges */}
+                        <span className="absolute top-2 left-2 z-10 bg-blue-500 text-white text-[11px] font-bold px-2 py-1 rounded">
+                            23%
+                        </span>
+                        <span className="absolute top-9 left-2 z-10 bg-gray-700 text-white text-[11px] font-bold px-2 py-1 rounded">
+                            RECOMMENDED
+                        </span>
+
+                        <Swiper
+                            ref={zoomSliderBig}
+                            modules={[Navigation]}
+                            navigation
+                            spaceBetween={10}
+                            slidesPerView={1}
+                        >
+                            {images.map((img, i) => (
+                                <SwiperSlide key={i}>
+                                    <InnerImageZoom
+                                        zoomType="hover"
+                                        zoomScale={1}
+                                        src={img}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
-                    <Slider {...settings} className='zoomSlider mt-2' ref={zoomSlider}>
-                        <div className='item'>
-                            <img onClick={() => goto(0)} src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg`} className='w-full cursor-pointer' />
-                        </div>
-                        <div className='item'>
-                            <img onClick={() => goto(1)} src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-47.jpg`} className='w-full cursor-pointer' />
-                        </div>
-                        <div className='item'>
-                            <img onClick={() => goto(2)} src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-35.jpg`} className='w-full cursor-pointer' />
-                        </div>
-                    </Slider>
+
+                    {/* Thumbnail Slider */}
+                    <Swiper
+                        ref={zoomSlider}
+                        spaceBetween={8}
+                        slidesPerView={4}
+                        className="mt-3"
+                    >
+                        {images.map((img, i) => (
+                            <SwiperSlide key={i}>
+                                <div
+                                    onClick={() => goto(i)}
+                                    className={`cursor-pointer overflow-hidden rounded-md border-2 transition-all ${
+                                        slideIndex === i ? 'border-blue-400' : 'border-transparent'
+                                    }`}
+                                >
+                                    <img src={img} className="w-full h-full object-cover" />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
 
                 {/* Right - Info */}
@@ -126,7 +132,6 @@ const ProductModal = (props) => {
                         <span className="text-base font-bold text-black/30 line-through">$9.35</span>
                         <span className="text-2xl font-bold text-red-500">$7.25</span>
                     </div>
-
                     {/* In Stock */}
                     <span className='bg-green-100 text-green-600 text-[11px] rounded-2xl px-3 py-1 font-medium'>
                         IN STOCK
@@ -181,7 +186,6 @@ const ProductModal = (props) => {
                         <span>Category: <strong className="text-gray-700">Meats & Seafood</strong></span>
                         <span>Tags: <strong className="text-gray-700">chicken, natural, organic</strong></span>
                     </div>
-
                 </div>
             </div>
         </Dialog>
