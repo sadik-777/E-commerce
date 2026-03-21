@@ -2,8 +2,8 @@
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 
 A modern, fully responsive e-commerce web application built for a seamless online grocery shopping experience.
 
@@ -29,7 +29,7 @@ A modern, fully responsive e-commerce web application built for a seamless onlin
 | Frontend | React.js |
 | Styling | Tailwind CSS / SCSS |
 | State Management | Redux / Context API |
-| Backend | Laravel (PHP) |
+| Backend | Express.js (Node.js) |
 | UI Components | Material UI (MUI) |
 | Icons | React Icons / FontAwesome |
 | Fonts | Google Fonts |
@@ -44,7 +44,7 @@ E-Commerce/
 │   │   ├── Component/   # Reusable components
 │   │   ├── Pages/       # Page components
 │   │   └── assets/      # Images and static files
-├── backend/         # Laravel API
+├── backend/         # Express.js API
 └── README.md
 ```
 
@@ -62,10 +62,8 @@ npm run dev
 ### Backend
 ```bash
 cd backend
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan serve
+npm install
+npm start
 ```
 
 ---
