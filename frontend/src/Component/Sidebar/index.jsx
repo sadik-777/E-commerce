@@ -10,6 +10,7 @@ const Sidebar = () => {
     return (
         <>
         <div className="w-[20%] flex-[0_0_20%]">
+            <div className="sticky top-12.5">
             <div className="filterBox mb-5">
                 <h6 className="font-bold text-[14px] mb-2">PRODUCT CATEGORIES</h6>
                 <div className="pl-2.5 max-h-45 overflow-x-hidden overflow-y-scroll [&::-webkit-scrollbar]:w-1.25! [&::-webkit-scrollbar]:h-1.25!">
@@ -92,6 +93,7 @@ const Sidebar = () => {
             </div>
             <br />
             <Link to='#'><img src="https://klbtheme.com/bacola/wp-content/uploads/2021/05/sidebar-banner.gif" alt="" /></Link>
+        </div>
         </div>
         
         </>

@@ -89,3 +89,51 @@
     width: 15px !important;
     height: 15px !important;
 }
+.MenuDrop .MuiPaper-root{
+    width: 80px !important;
+}
+.productItem.four{
+    width: 23%;
+    display: flex;
+    align-items: center;
+}
+.productItem.three{
+    width: 31%;
+    display: flex;
+    align-items: center;
+}
+.productItem.two{
+    width: 47%;
+    display: flex;
+    align-items: center;
+}
+.productItem.one {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+}
+
+.productItem.one .imgWrapper {
+    width: 30%;
+    flex: 0 0 30%;
+    height: 200px;
+}
+
+.productItem.one .info {
+    width: 70%;
+    flex: 0 0 70%;
+    padding-left: 30px;
+}
+
+.productItem.one .info h4 {
+    font-size: 18px;
+    height: auto;
+}
+.productItem.one .info .addToCart {
+    width: fit-content;
+}
+button.act{
+    background-color: #f1f1f1 !important;
+}

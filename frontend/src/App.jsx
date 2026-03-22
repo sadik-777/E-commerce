@@ -34,7 +34,7 @@ function App() {
     <Header/>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/categorie/:id" element={<Listing/>}/>
+          <Route path="/shop/" element={<Listing/>}/>
         </Routes>
     <Footer/>
     {isOpenProductModel === true && <ProductModal/>}
