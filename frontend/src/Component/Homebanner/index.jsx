@@ -16,13 +16,13 @@ return(
     <div className="relative homeBannerSection w-5xl -right-96 mt-9">
     <Slider {...settings}>
         <div className="item">
-            <img className='w-full h-48' src="https://klbtheme.com/bacola/wp-content/uploads/2021/05/slider-image-3.jpg" alt="" className="w-full"/>
+            <img className='w-full' src="https://klbtheme.com/bacola/wp-content/uploads/2021/05/slider-image-3.jpg" alt="" />
         </div>
         <div className="item">
-            <img className='w-full h-48' src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/slider-image-2.jpg" alt="" className="w-full"/>
+            <img className='w-full' src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/slider-image-2.jpg" alt="" />
         </div>
         <div className="item">
-            <img className='w-full h-48' src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/slider-image-1.jpg" alt="" className="w-full"/>
+            <img className='w-full' src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/slider-image-1.jpg" alt="" />
         </div>
     </Slider>
 </div>

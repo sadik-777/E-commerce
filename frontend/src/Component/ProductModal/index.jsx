@@ -2,37 +2,17 @@ import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
 import { MdClose } from "react-icons/md";
 import Rating from '@mui/material/Rating';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import InnerImageZoom from 'react-inner-image-zoom';
-import 'react-inner-image-zoom/lib/styles.min.css';
+import ProductZoom from '../ProductZoom/index'
 import { FaRegHeart, FaCheck } from "react-icons/fa";
 import { BsArrowDownUp } from "react-icons/bs";
-import { useRef, useState, useContext } from 'react';
+import {useState, useContext } from 'react';
 import QuantityBox from '../../Component/QuantityBox/index';
 import { Mycontext } from '../../App';
-
-const images = [
-    'https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg',
-    'https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-47.jpg',
-    'https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-35.jpg',
-];
-
 const ProductModal = () => {
-    const [slideIndex, setSlideIndex] = useState(0);
     const [value] = useState(2.5);
     const context = useContext(Mycontext);
 
-    const zoomSliderBig = useRef();
-    const zoomSlider = useRef();
 
-    const goto = (index) => {
-        setSlideIndex(index);
-        zoomSlider.current.swiper.slideTo(index);
-        zoomSliderBig.current.swiper.slideTo(index);
-    };
 
     return (
         <Dialog
@@ -72,61 +52,13 @@ const ProductModal = () => {
 
                 {/* Left - Images */}
                 <div className="w-full md:w-5/12 pr-4">
+                    <ProductZoom/>
 
                     {/* Big Zoom Slider */}
-                    <div className="relative">
-                        {/* Badges */}
-                        <span className="absolute top-2 left-2 z-10 bg-blue-500 text-white text-[11px] font-bold px-2 py-1 rounded">
-                            23%
-                        </span>
-                        <span className="absolute top-9 left-2 z-10 bg-gray-700 text-white text-[11px] font-bold px-2 py-1 rounded">
-                            RECOMMENDED
-                        </span>
-
-                        <Swiper
-                            ref={zoomSliderBig}
-                            modules={[Navigation]}
-                            navigation
-                            spaceBetween={10}
-                            slidesPerView={1}
-                        >
-                            {images.map((img, i) => (
-                                <SwiperSlide key={i}>
-                                    <InnerImageZoom
-                                        zoomType="hover"
-                                        zoomScale={1}
-                                        src={img}
-                                    />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </div>
-
-                    {/* Thumbnail Slider */}
-                    <Swiper
-                        ref={zoomSlider}
-                        spaceBetween={8}
-                        slidesPerView={4}
-                        className="mt-3"
-                    >
-                        {images.map((img, i) => (
-                            <SwiperSlide key={i}>
-                                <div
-                                    onClick={() => goto(i)}
-                                    className={`cursor-pointer overflow-hidden rounded-md border-2 transition-all ${
-                                        slideIndex === i ? 'border-blue-400' : 'border-transparent'
-                                    }`}
-                                >
-                                    <img src={img} className="w-full h-full object-cover" />
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
                 </div>
 
                 {/* Right - Info */}
                 <div className="w-full md:w-7/12 pl-4">
-
                     {/* Price */}
                     <div className="flex items-center gap-3 mb-3">
                         <span className="text-base font-bold text-black/30 line-through">$9.35</span>

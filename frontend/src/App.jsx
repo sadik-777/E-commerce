@@ -3,6 +3,7 @@ import Header from "./Component/Header"
 import Footer from "./Component/Footer"
 import { Routes, Route } from "react-router-dom";
 import './index.css'
+import ProductDetails from './pages/ProductDetails/index'
 import ProductModal from './Component/ProductModal/index'
 import { createContext, useEffect, useState } from "react";
 import axios from "axios"
@@ -34,7 +35,8 @@ function App() {
     <Header/>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/shop/" element={<Listing/>}/>
+          <Route path="/shop/:id" element={<Listing/>}/>
+          <Route path="/product/:id" element={<ProductDetails/>}/>
         </Routes>
     <Footer/>
     {isOpenProductModel === true && <ProductModal/>}
