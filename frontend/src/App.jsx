@@ -6,6 +6,7 @@ import './index.css'
 import ProductDetails from './pages/ProductDetails/index'
 import ProductModal from './Component/ProductModal/index'
 import { createContext, useEffect, useState } from "react";
+import Cart from './pages/Cart/index'
 import axios from "axios"
 import Listing from './pages/Listing/index'
 const Mycontext = createContext()
@@ -36,6 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/shop/:id" element={<Listing/>}/>
+          <Route path="/cart" element={<Cart/>}/>
           <Route path="/product/:id" element={<ProductDetails/>}/>
         </Routes>
     <Footer/>
