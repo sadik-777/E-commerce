@@ -54,9 +54,11 @@ const Header = () => {
                         
                         {/* Cart Button */}
                         <div className="relative ml-2">
+                            <Link to='/cart'>
                             <Button className='min-w-fit! w-11! h-11! rounded-full! bg-[#fff1ee]! hover:bg-[#ffe4e0]!'>
                                 <HiOutlineShoppingBag className="text-[24px] text-[#ea2b0f]"/>
                             </Button>
+                            </Link>
                             {/* Notification Badge */}
                             <span className='absolute -top-1 -right-1 flex items-center justify-center bg-[#ea2b0f] text-white text-[11px] font-bold rounded-full w-5 h-5 border-2 border-white'>
                                 0
