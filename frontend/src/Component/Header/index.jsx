@@ -6,7 +6,7 @@ import { LuUser } from "react-icons/lu";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import SearchBox from './SearchBox';
 import Navigation from './Navigation';
-import Mycontext from '../../App';
+import {Mycontext} from '../../App';
 import { useContext } from 'react';
 import { FiUser } from "react-icons/fi";
 
