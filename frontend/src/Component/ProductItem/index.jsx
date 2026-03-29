@@ -3,6 +3,7 @@ import { TfiFullscreen } from "react-icons/tfi";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useState, useContext } from "react";
 import { Mycontext } from '../../App';
+import ProductDetail from '../../pages/ProductDetails/index'
 
 const ProductItem = (props) => {
   const context = useContext(Mycontext);
