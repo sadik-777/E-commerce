@@ -6,12 +6,12 @@ import { LuUser } from "react-icons/lu";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import SearchBox from './SearchBox';
 import Navigation from './Navigation';
-import Mycontext from '../../App';
+import {Mycontext} from '../../App';
 import { useContext } from 'react';
 import { FiUser } from "react-icons/fi";
 
 const Header = () => {
-    const context = useContext(Mycontext)
+    const context = useContext(Mycontext);
     
     return (
         <>
@@ -48,7 +48,7 @@ const Header = () => {
                     <div className='flex items-center gap-3'>
                     {
                         context.isLogin !== true ? <Button className='!bg-[#2bbef9] !text-white !rounded-full !px-5 !py-2 !text-[13px] !font-bold !normal-case !mr-3'>Sign In</Button> 
-                    : <Button className='!w-9 !h-9 !min-w-0 !rounded-full !bg-gray-100 !text-gray-700 !mr-3'><FiUser /></Button>
+                    : <Button className='w-9! h-9! min-w-0! !rounded-full !bg-gray-100 !text-gray-700 !mr-3'><FiUser /></Button>
 }
                         {/* User Icon */}
                         <Button className='min-w-fit! w-11! h-11! rounded-full! border! border-gray-200! text-[#2b2b2b]! hover:bg-gray-100!'>
